@@ -91,7 +91,11 @@ Each rule's metadata includes:
 PRs welcome. To add a new rule:
 1. Drop the `.yaml` rule into `rules/<lang>/<category>.yaml`.
 2. Add markers to the sibling `<category>.<ext>` test fixture (`# ruleid: <rule-id>` for matches; `# ok: <rule-id>` for non-matches).
-3. Run `semgrep --test --config rules/` locally to verify.
+3. Run `semgrep scan --test --config rules/ rules/` locally to verify.
+
+### TypeScript fixtures
+
+The JavaScript rules carry `languages: [javascript, typescript]`, but Semgrep's `--test` mode auto-discovers only one fixture per rule (matching the rule basename). To explicitly exercise the TypeScript parser path, parallel `.ts` fixtures live next to the `.js` fixtures in `rules/javascript/`, and a small verification script ([`scripts/test_typescript_fixtures.py`](scripts/test_typescript_fixtures.py)) runs in CI to confirm every `// ruleid:` marker matches and every `// ok:` marker doesn't.
 
 ## License
 

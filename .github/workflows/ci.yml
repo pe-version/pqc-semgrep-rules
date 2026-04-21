@@ -19,5 +19,8 @@ jobs:
       - name: Validate rule schema
         run: semgrep --validate --config rules/
 
-      - name: Run rule tests
+      - name: Run rule tests (auto-discovers one fixture per rule)
         run: semgrep scan --test --config rules/ rules/
+
+      - name: Verify parallel TypeScript fixtures
+        run: python3 scripts/test_typescript_fixtures.py
