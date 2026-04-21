@@ -1,0 +1,6 @@
+.semgrep_logs/
+.semgrep/
+__pycache__/
+.DS_Store
+.idea/
+.vscode/
